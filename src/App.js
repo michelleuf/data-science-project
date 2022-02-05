@@ -1,40 +1,30 @@
-import logo from './logo.svg';
 import React from 'react';
 import './App.css';
 import * as d3 from 'd3';
-//test API
-import testService from './services/test/test-service'; 
 
-class App extends React.Component {
-  constructor(props){
-     super(props);
-     this.myRef = React.createRef();
-     this.testFunction(); 
-  }
-  componentDidMount(){
-     console.log(this.myRef);
-     d3.select(this.myRef.current)
-     .append('p')
-     .text('Hello d3');
-  }
-  render(){
-   return (
-     <div ref={this.myRef}>
-     </div>
-   );
-  }
+// import Components
+import NavBar from './components/NavBar';
+import Footer from './components/Footer';
+// import containers
+import WorldRecords from './containers/worldRecords/WorldRecords';
+import Statistic from './containers/statistic/Statistic';
+import Prediction from './containers/prediction/Prediction';
+// import services
 
- testFunction(){
-   testService.testFunction()
-   .then(response => {
-       this.setState({
-         test: response.data,
-       });
-       console.log(response.data);
-     })
-     .catch(e => {
-       console.log(e);
-     });
-   }
+export default function App() {
+   return(
+      <div>
+         <div id="navbar">
+            <NavBar />
+         </div>
+         <div id="content" class="mb-auto mx-20 my-10 mb-10 flex flex-col space-y-4 ...">
+            <WorldRecords/>
+            <Statistic/>
+            <Prediction/>
+         </div>
+         <div id="footer">
+            <Footer />
+         </div>
+      </div>
+  )
 }
- export default App;
