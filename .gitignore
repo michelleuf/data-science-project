@@ -24,3 +24,10 @@ yarn-error.log*
 
 #package-lock
 package-lock.json
+
+#IDEs
+.idea/
+
+#flask and virtual env
+backend/env
+backend/__pycache__
